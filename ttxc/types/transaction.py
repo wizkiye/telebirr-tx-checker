@@ -21,7 +21,7 @@ class Transaction:
     mode: str
     reason: str
     channel: str
-    base: "ttxc.TxChecker"
+    base: "ttxc.TelebirrTxChecker"
 
     def __str__(self):
         return f"{self.id} {self.payer} {self.receiver} {self.status} {self.discount} {self.vat} {self.total_amount_in_word} {self.total_sent} {self.date} {self.amount} {self.mode} {self.reason} {self.channel}"

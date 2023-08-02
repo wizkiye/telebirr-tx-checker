@@ -9,13 +9,20 @@ from ttxc.errors import TransactionNotFound
 from ttxc.types import Transaction, Payer, Receiver
 
 
+def r_birr(text: str):
+    return float(text.strip(" Birr"))
+
+
 class TelebirrTxChecker:
     def __init__(
         self,
         proxies: Optional[dict] = None,
     ):
         self.s = httpx.AsyncClient(
-            proxies=proxies, headers=constants.HEADERS, timeout=constants.TIMEOUT
+            proxies=proxies,
+            headers=constants.HEADERS,
+            timeout=constants.TIMEOUT,
+            verify=False,
         )
 
     async def process_request(
@@ -46,10 +53,10 @@ class TelebirrTxChecker:
                 phone=data["receiver_phone"],
             ),
             status=data["status"],
-            discount=data["discount"],
-            vat=data["vat"],
+            discount=r_birr(data["discount"]),
+            vat=r_birr(data["vat"]),
             total_amount_in_word=data["total_amount_in_word"],
-            total_sent=data["total_sent"],
+            total_sent=r_birr(data["total_sent"]),
             date=datetime.strptime(data["date"], "%d-%m-%Y %H:%M:%S"),
             mode=data["mode"],
             reason=data["reason"],

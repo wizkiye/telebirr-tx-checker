@@ -1,1 +1,1 @@
-from .main import TxChecker
+from .main import TelebirrTxChecker
