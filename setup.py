@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="telebirrTxChecker",
-    version="0.0.1",
+    version="0.0.2",
     packages=find_packages(),
     url="https://github.com/wizkiye/TelebirrPaymentProcessor",
     license="MIT",
