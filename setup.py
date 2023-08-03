@@ -14,9 +14,7 @@ setup(
     long_description=Path("README.md").read_text(),
     long_description_content_type="text/markdown",
     install_requires=[
-        "httpx>=0.24.1",
-        "bs4>=0.0.1",
-        "beautifulsoup4>=4.12.2",
-        "pdfkit>=1.0.0",
+        "httpx",
+        "bs4",
     ],
 )
