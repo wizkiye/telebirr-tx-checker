@@ -40,3 +40,19 @@ class Transaction:
 
     async def save_pdf(self, path: str) -> bool:
         return await self.base.save_pdf(self.id, path)
+
+    def dict(self):
+        return {
+            "id": self.id,
+            "payer": self.payer.__dict__,
+            "receiver": self.receiver.__dict__,
+            "status": self.status,
+            "discount": self.discount,
+            "vat": self.vat,
+            "total_amount_in_word": self.total_amount_in_word,
+            "total_sent": self.total_sent,
+            "date": self.date.isoformat(),
+            "mode": self.mode,
+            "reason": self.reason,
+            "channel": self.channel,
+        }
