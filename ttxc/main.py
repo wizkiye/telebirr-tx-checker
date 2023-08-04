@@ -2,7 +2,6 @@ from datetime import datetime
 from typing import Union, Optional
 
 import httpx
-import pdfkit
 
 from ttxc import constants, utils
 from ttxc.errors import TransactionNotFound
@@ -64,6 +63,6 @@ class TelebirrTxChecker:
             base=self,
         )
 
-    @staticmethod
-    async def save_pdf(tx_id: str, path: str) -> bool:
-        return pdfkit.from_url(constants.BASE_URL.format(tx_id), path)
+    # @staticmethod
+    # async def save_pdf(tx_id: str, path: str) -> bool:
+    #     return pdfkit.from_url(constants.BASE_URL.format(tx_id), path)

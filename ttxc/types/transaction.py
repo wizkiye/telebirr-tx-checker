@@ -38,8 +38,8 @@ class Transaction:
     def is_paid(self):
         return self.status.lower() == "completed"
 
-    async def save_pdf(self, path: str) -> bool:
-        return await self.base.save_pdf(self.id, path)
+    # async def save_pdf(self, path: str) -> bool:
+    #     return await self.base.save_pdf(self.id, path)
 
     def dict(self):
         return {
