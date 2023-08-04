@@ -2,12 +2,14 @@
 
 This is a simple script that checks your Telebirr transactions and parses them 
 
-### ⚠️ Not finished yet
+### ⚠ Not finished yet
 
 ## Installation
 
 ```bash
+
 pip install git+https://github.com/wizkiye/telebirr-tx-checker.git
+
 ```
 
 ## Usage
@@ -29,11 +31,5 @@ async def main():
     print(tx.payer.name)
     print(tx.payer.phone)
     print(tx.payer.account_type)
-    ...
 
 ```
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
-```
-
