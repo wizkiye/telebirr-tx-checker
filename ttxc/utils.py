@@ -2,7 +2,6 @@ import re
 
 from bs4 import BeautifulSoup
 
-
 def parse_transaction(html: str):
     soup = BeautifulSoup(html, "lxml")
     try:
@@ -13,9 +12,9 @@ def parse_transaction(html: str):
         receiver_phone = find_next("""የገንዘብ ተቀባይ ቴሌብር ቁ./Credited party""", soup)
         payer_account_type = find_next("""የከፋይ አካውንት አይነት/Payer account type""", soup)
         discount_amount = find_next("ቅናሽ/Discount Amount", soup)
-        vat = find_next("15% ቫት/VAT", soup)
+        vat = find_next("15% ተ.እ.ታ/VAT", soup)
         total_amount_in_word = find_next("የገንዘቡ ልክ በፊደል/Total Amount in word", soup)
-        total_sent = find_next("ጠቅላላ የተክፈለ/Total Amount Paid", soup)
+        total_sent = find_next("ጠቅላላ የተከፈለ/Total Paid Amount", soup)
         payment_mode = find_next(" የክፍያ ዘዴ/Payment Mode", soup)
         reason = find_next("የክፍያ ምክንያት/Payment Reason", soup)
         channel = find_next("የክፍያ መንገድ/Payment channel", soup)
@@ -41,7 +40,7 @@ def parse_transaction(html: str):
 
 
 def find_next(text: str, soup: BeautifulSoup):
-    return soup.find("td", text=re.compile(text)).find_next("td").text.strip()
+    return soup.find("td", string=re.compile(text)).find_next("td").text.strip()
 
 
 def format_phone(phone: str):
@@ -52,3 +51,4 @@ def format_phone(phone: str):
     if phone.startswith("0"):
         return "251" + phone[1:]
     return phone
+
